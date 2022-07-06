@@ -75,7 +75,6 @@ for ($i=0; $i <= $TorCount; $i++) {
         $RGBA = str_replace(" ", ",", $RGBA);
         $OutlookArea = PF_Polygon($ProbabilityRing, $Tors[$i], $RGBA);
         $PlacefileText = "$PlacefileText\n$OutlookArea\n";
-        $OutlookArea = PF_LineBox($ProbabilityRing, $Winds[$i], $RGB);
         $OutlookArea = PF_LineBox($ProbabilityRing, $Tors[$i], $RGB);
     }
     $PlacefileText = "$PlacefileText\n$OutlookArea\n";
