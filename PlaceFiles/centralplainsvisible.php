@@ -19,12 +19,15 @@ $filename5='https://aviationweather.gov/data/obs/sat/us/sat_vis_ict.jpg';
 $fullfile = './centralplainsvisible.jpg'; //the name of the file that is created.
 $maxage = 600; //the maximum age of the file in seconds.
 
+/*
 $myFile = "timestamp.txt";
 $fh = fopen($myFile, 'r');
 $oldstamp = fread($fh, 10);
 fclose($fh);
 $fh = fopen($myFile, 'w') or die("can't open file");
 fwrite($fh, filemtime_remote($filename5));
+*/
+$timestamp = date('Ymd-His');
 
 
 if (time()-filemtime($fullfile)>$maxage)
@@ -71,7 +74,7 @@ elseif ($_GET[batch] != "yes")
 	        echo "Image age: " . $difftime ." seconds (max " . $maxage . ")<br /> \n";
 	    }
 	 echo $oldstamp . "<br /> \n";
-	 echo "<img src=\"" . $fullfile . "\"> \n";
+	 echo "<img src=\"" . $fullfile . "?nocache=" . $timestamp . "\"> \n";
 	 echo "<br />Options for building the image only (without the text/html): \n";
         echo "<br /><a href=\"centralplainsvisible.php?batch=yes\">Build File only! No output</a> \n";
         echo "<br /><a href=\"centralplainsvisible.php?batch=image\">return image only. no other display.</a> \n";

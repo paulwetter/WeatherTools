@@ -70,12 +70,13 @@ for ($i=0; $i <= $TorCount; $i++) {
         $OutlookArea = PF_LineBox($ProbabilityRing, $Tors[$i], $RGB);
     } else {
         $ProbabilityRing = 'Significant Tornado';
-        $RGB = prob_color('Tor', $WindProb[$i]);
+        $RGB = prob_color('Tor', $TorProb[$i]);
         $RGBA = $RGB . " 90";
         $RGBA = str_replace(" ", ",", $RGBA);
-        $OutlookArea = PF_Polygon($ProbabilityRing, $Winds[$i], $RGBA);
+        $OutlookArea = PF_Polygon($ProbabilityRing, $Tors[$i], $RGBA);
         $PlacefileText = "$PlacefileText\n$OutlookArea\n";
         $OutlookArea = PF_LineBox($ProbabilityRing, $Winds[$i], $RGB);
+        $OutlookArea = PF_LineBox($ProbabilityRing, $Tors[$i], $RGB);
     }
     $PlacefileText = "$PlacefileText\n$OutlookArea\n";
 }
